@@ -1,0 +1,16 @@
+name: Auto Sync Fork
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天凌晨0点自动同步一次
+  workflow_dispatch: # 同时也支持你手动点击运行
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync Fork
+        uses: tgymnich/fork-sync@v1.10
+        with:
+          base: main
+          head: main
+          owner: huangxd- # 原作者的用户名
